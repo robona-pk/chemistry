@@ -1,0 +1,101 @@
+*{box-sizing:border-box}body{margin:0;background:#0b0b0d;color:#f5f5f7;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input{font:inherit}button{cursor:pointer}.app{min-height:100vh;max-width:720px;margin:0 auto;padding-bottom:88px}.topbar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:18px 18px 12px;background:rgba(11,11,13,.94);backdrop-filter:blur(16px)}.brand{font-weight:800;letter-spacing:-.04em;font-size:24px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#888;margin-bottom:8px}.muted{color:#92929b}.screen{padding:8px 18px}.card{background:#151519;border:1px solid #27272d;border-radius:24px;padding:20px;margin:12px 0}.profile-card{min-height:500px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;background:linear-gradient(180deg,#24242a 0%,#151519 62%)}.avatar{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:#2b2b33;font-size:26px;font-weight:800;margin-bottom:14px}.name{font-size:32px;font-weight:800;letter-spacing:-.04em}.meta{color:#b9b9c2;margin-top:5px}.chips{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}.chip{padding:7px 10px;border-radius:999px;background:#23232a;color:#cfcfd7;font-size:12px}.prompt{margin:16px 0 0}.prompt b{display:block;font-size:12px;color:#888;margin-bottom:6px;text-transform:uppercase;letter-spacing:.1em}.prompt p{margin:0;font-size:17px;line-height:1.4}.actions{display:flex;gap:12px;margin-top:14px}.btn{border:0;border-radius:16px;padding:14px 16px;background:#26262d;color:#fff;font-weight:700}.btn.primary{background:#f2f2f4;color:#111}.btn.danger{background:#2a2023;color:#ffb8c4}.btn.full{width:100%}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(720px,100%);display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(11,11,13,.96);border-top:1px solid #202026;backdrop-filter:blur(18px)}.nav button{border:0;background:transparent;color:#77777f;padding:8px 4px;font-size:12px}.nav button.active{color:#fff}.field{margin:14px 0}.field label{display:block;font-size:13px;color:#aaa;margin-bottom:7px}.field input{width:100%;background:#17171b;border:1px solid #2b2b31;color:#fff;padding:13px 14px;border-radius:13px;outline:none}.select-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.select{padding:13px;border-radius:13px;border:1px solid #2b2b31;background:#17171b;color:#aaa;text-align:left}.select.selected{border-color:#fff;color:#fff;background:#222228}.chat-row{display:flex;gap:12px;padding:15px 0;border-bottom:1px solid #202026}.mini-avatar{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#25252b;font-weight:800;flex:0 0 auto}.chat-copy{min-width:0}.chat-title{font-weight:750}.preview{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#888;margin-top:4px;font-size:13px}.coach{border:1px solid #37373e;background:#1b1b20;border-radius:18px;padding:15px;margin-top:12px}.coach-title{font-weight:800}.coach p{color:#b7b7c0;line-height:1.45;margin:7px 0}.toggle{display:flex;align-items:center;justify-content:space-between;padding:14px 0}.switch{width:48px;height:28px;border-radius:99px;background:#33333a;padding:3px}.switch.on{background:#eee}.knob{width:22px;height:22px;border-radius:50%;background:#777;transition:.2s}.switch.on .knob{transform:translateX(20px);background:#111}.stat{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #24242a}.bar{height:7px;background:#28282e;border-radius:99px;overflow:hidden;margin-top:8px}.bar span{display:block;height:100%;background:#eee}.empty{text-align:center;padding:60px 20px;color:#888}.small{font-size:12px;color:#777}.link{color:#fff;text-decoration:underline;text-underline-offset:3px}.hero{padding:28px 0 18px}.hero h1{font-size:42px;line-height:1;letter-spacing:-.055em;margin:0 0 14px}.hero p{font-size:17px;color:#aaa;line-height:1.5}.list-title{font-size:20px;font-weight:800;margin:22px 0 8px}.bubble{max-width:82%;padding:11px 13px;border-radius:17px;background:#202027;margin:7px 0;line-height:1.4}.bubble.me{margin-left:auto;background:#eee;color:#111}.chat-input{display:flex;gap:8px;position:sticky;bottom:72px;background:#0b0b0d;padding:10px 0}.chat-input input{flex:1}.coach-actions{display:flex;gap:8px}.coach-actions .btn{flex:1;font-size:12px;padding:11px 8px}
+/* =====================================================================
+   Onboarding wizard additions — append to the end of styles.css
+   These are new classes introduced by the photo/prompts/MBTI flow.
+   Everything else (.card, .btn, .field, .select, .chip, .prompt, etc.)
+   reuses classes that already exist in this file.
+   Colors fall back to sensible defaults if your existing custom
+   properties (--accent, --ink, --line, --muted, --card-bg) aren't set —
+   replace the var(...) fallbacks below with your real tokens once you
+   see it rendered against the rest of the app.
+   ===================================================================== */
+
+/* progress bar at the top of each onboarding step */
+.ob-progressbar { display:flex; gap:6px; margin-bottom:20px; }
+.ob-seg { flex:1; height:4px; border-radius:2px; background: var(--line, #e5e5ea); overflow:hidden; }
+.ob-seg.on { background: var(--accent, #e4572e); }
+
+/* inline validation messages, reused across all four steps */
+.ob-error { color: var(--danger, #c1432b); margin: 10px 0; display:none; }
+.ob-error.show { display:block; }
+
+/* step 2: photo grid */
+.ob-photo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:8px; }
+.ob-photo-slot {
+  aspect-ratio: 3/4; border-radius:14px; border:1.5px dashed var(--line, #d8d8e2);
+  display:flex; align-items:center; justify-content:center; position:relative;
+  overflow:hidden; background: var(--card-bg, #fff); cursor:pointer;
+}
+.ob-photo-slot.filled { border-style:solid; cursor:grab; }
+.ob-photo-slot img { width:100%; height:100%; object-fit:cover; }
+.ob-photo-slot .ob-photo-add { font-size:26px; color: var(--muted, #8a8a96); }
+.ob-photo-tag {
+  position:absolute; top:6px; left:6px; background: var(--ink, #171332); color:#fff;
+  font-size:10.5px; font-weight:600; padding:3px 7px; border-radius:999px;
+}
+.ob-photo-remove {
+  position:absolute; top:6px; right:6px; width:24px; height:24px; border-radius:50%;
+  background:rgba(0,0,0,0.6); color:#fff; border:none; font-size:14px; line-height:1;
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+}
+.ob-photo-slot.dragover { outline:2px solid var(--accent, #e4572e); outline-offset:-2px; }
+
+/* step 3: prompt cards */
+.ob-prompt-card { margin-bottom:14px; }
+.ob-prompt-card select {
+  width:100%; margin-bottom:10px; font-weight:600; padding:12px 14px;
+  border-radius:10px; border:1.5px solid var(--line, #d8d8e2); background: var(--card-bg, #fff);
+}
+.ob-prompt-card textarea {
+  width:100%; min-height:70px; padding:12px 14px; border-radius:10px;
+  border:1.5px solid var(--line, #d8d8e2); font-family:inherit; font-size:15px; resize:vertical;
+}
+.ob-charcount { text-align:right; margin-top:4px; }
+
+/* step 4: MBTI assessment */
+.ob-mbti-section { font-size:13px; font-weight:700; color: var(--accent, #e4572e); margin:28px 0 4px; }
+.ob-mbti-section:first-child { margin-top:0; }
+.ob-mbti-q { border-top:1px solid var(--line, #e5e5ea); padding:18px 0; }
+.ob-mbti-stmts { display:flex; justify-content:space-between; gap:10px; font-size:14px; line-height:1.35; margin-bottom:12px; }
+.ob-mbti-stmts span { flex:1; }
+.ob-mbti-stmts span.right { text-align:right; }
+.ob-mbti-scale { display:flex; justify-content:space-between; gap:8px; }
+.ob-pip {
+  flex:1; height:38px; border-radius:10px; border:1.5px solid var(--line, #d8d8e2);
+  background: var(--card-bg, #fff); cursor:pointer; position:relative; display:block;
+}
+.ob-pip input { position:absolute; inset:0; opacity:0; margin:0; cursor:pointer; }
+.ob-pip.on { border-color: var(--accent, #e4572e); background: rgba(228,87,46,0.12); }
+
+/* step 5: review card photo */
+.ob-review-photo { aspect-ratio:4/5; border-radius:14px; overflow:hidden; margin-bottom:14px; background: var(--line, #eee); }
+.ob-review-photo img { width:100%; height:100%; object-fit:cover; }
+
+/* profile tab: real uploaded photo instead of initials avatar */
+.avatar-photo { width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:14px; margin-bottom:12px; }
+
+/* finish popup — MBTI type reveal */
+.ob-modal-overlay {
+  position:fixed; inset:0; background:rgba(15,12,30,0.55);
+  display:flex; align-items:flex-end; justify-content:center; z-index:50;
+}
+.ob-modal-card {
+  background: var(--card-bg, #fff); width:100%; max-width:520px;
+  border-radius:24px 24px 0 0; padding:32px 24px; text-align:center;
+}
+@media (min-width:560px){
+  .ob-modal-overlay { align-items:center; }
+  .ob-modal-card { border-radius:24px; }
+}
+.ob-modal-check {
+  width:44px; height:44px; border-radius:50%; background: var(--accent, #2e8b84);
+  color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:20px;
+}
+.ob-modal-eyebrow { font-size:13px; font-weight:600; color: var(--muted, #8a8a96); margin-bottom:6px; }
+.ob-modal-type {
+  font-size:56px; font-weight:700; letter-spacing:0.01em; color: var(--accent, #e4572e); line-height:1; margin-bottom:14px;
+}
+.ob-modal-headline { font-size:15px; color: var(--muted, #8a8a96); line-height:1.55; max-width:42ch; margin:0 auto; }
+
+/* Familiar swipe discovery + private coach layer */
+.discover-head{display:flex;align-items:center;justify-content:space-between;margin:8px 0 14px}.discover-head b{font-size:20px}.round-btn,.action-button,.back-btn,.coach-trigger,.text-btn,.sheet-close{border:0;background:none;color:#f5f5f7;cursor:pointer}.round-btn{width:38px;height:38px;border-radius:50%;background:#202027;font-size:19px}.inbox-count{min-width:28px;height:28px;padding:4px 8px;border-radius:999px;background:#eee;color:#111;text-align:center;font-size:12px;font-weight:800}.swipe-stage{position:relative}.discover-card{overflow:hidden;min-height:575px;border:1px solid #313139;border-radius:28px;background:#17171b;box-shadow:0 18px 46px rgba(0,0,0,.28);touch-action:pan-y;user-select:none;transition:transform .18s ease,box-shadow .18s ease}.discover-card.swiping-right{box-shadow:14px 0 0 rgba(131,224,174,.52)}.discover-card.swiping-left{box-shadow:-14px 0 0 rgba(255,151,168,.48)}.card-art{height:280px;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 70% 18%,#97759c,#303753 42%,#161824 76%)}.card-gradient{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#17171b 100%)}.card-avatar{position:relative;width:112px;height:112px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(20,20,30,.35);font-size:36px;font-weight:900;backdrop-filter:blur(8px)}.card-photo-label{position:absolute;right:16px;top:16px;border-radius:999px;padding:7px 10px;background:rgba(11,11,13,.55);font-size:12px}.card-content{margin-top:-34px;position:relative;padding:0 20px 20px}.card-content .name{font-size:31px}.moment-picker{display:flex;gap:7px;overflow-x:auto;margin:18px 0 10px;padding-bottom:3px}.moment{white-space:nowrap;border:1px solid #35353d;border-radius:999px;padding:8px 10px;background:#202027;color:#b9b9c2;font-size:12px}.moment span{margin-right:5px}.moment.selected{color:#111;background:#f5f5f7;border-color:#f5f5f7}.selected-moment{min-height:86px;border-left:2px solid #aeadb5;padding:11px 13px;background:#202027;border-radius:0 14px 14px 0}.selected-moment .eyebrow{margin:0 0 4px}.selected-moment p{margin:0;line-height:1.4;font-size:15px}.swipe-hint{text-align:center;margin:12px 0 4px;color:#777;font-size:12px}.swipe-actions{display:flex;align-items:center;justify-content:center;gap:18px;margin:15px 0}.action-button{display:grid;place-items:center;width:52px;height:52px;border:1px solid #32323a;border-radius:50%;background:#1a1a20;font-size:25px;box-shadow:0 5px 15px rgba(0,0,0,.2)}.action-button.rewind{width:42px;height:42px;color:#d6a6ff}.action-button.pass{color:#ff9cac}.action-button.note{width:46px;height:46px;color:#f3c86a}.action-button.like{color:#8de0b8}.discover-footnote{text-align:center;max-width:360px;margin:0 auto}.field span{display:block;font-size:13px;color:#aaa;margin-bottom:7px}.field em{font-style:normal;color:#777}.field textarea{width:100%;min-height:102px;background:#17171b;border:1px solid #36363e;border-radius:13px;padding:12px;color:#fff;resize:vertical}.action-sheet,.coach-sheet{position:relative;text-align:left}.action-sheet h2,.coach-sheet h2,.compact-sheet h2{margin:4px 0 8px;font-size:25px;letter-spacing:-.03em}.sheet-close{position:absolute;right:16px;top:14px;width:32px;height:32px;border-radius:50%;background:#282830;font-size:22px}.sheet-quote{margin:5px 0 20px;color:#c0c0c8;line-height:1.45}.compact-sheet,.match-sheet{text-align:center}.text-btn{display:block;width:100%;padding:12px;margin-top:4px;color:#bfc0c7;font-weight:700}.match-sheet{position:relative;overflow:hidden}.match-sheet>*{position:relative}.match-orbit{position:absolute;border:1px solid rgba(255,255,255,.12);border-radius:50%}.match-orbit.one{width:240px;height:240px;left:-94px;top:-90px}.match-orbit.two{width:300px;height:300px;right:-155px;bottom:-170px}.match-sheet .ob-modal-check{background:#f0a8b2}.chat-row{border:0;background:transparent;color:#fff;width:100%;text-align:left;align-items:center;cursor:pointer}.chat-arrow{margin-left:auto;font-size:26px;color:#777}.coach-promise{margin-top:24px}.empty-state{text-align:center;padding:38px 20px}.empty-icon{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;margin:0 auto 12px;background:#282830;font-size:21px}.chat-header{display:flex;gap:12px;align-items:center;padding:4px 0 16px;border-bottom:1px solid #23232a}.back-btn{font-size:38px;line-height:.7}.coach-trigger{margin-left:auto;border-radius:999px;padding:9px 12px;background:#25252c;font-size:12px;font-weight:800}.coach-trigger.enabled{background:#e8e8eb;color:#16161a}.messages{min-height:calc(100vh - 240px);padding:14px 0 82px}.chat-empty{text-align:center;padding:80px 18px;color:#a6a6af}.chat-empty b{color:#f5f5f7}.chat-empty p{line-height:1.45}.coach-sheet p{color:#b9b9c2;line-height:1.5}.coach-option{display:flex;align-items:center;gap:12px;width:100%;margin:10px 0;border:1px solid #35353d;border-radius:15px;padding:14px;background:#202027;color:#f5f5f7;text-align:left}.coach-option>span:first-child{font-size:19px}.coach-option>span:last-child{margin-left:auto;color:#888;font-size:23px}.coach-option small{display:block;margin-top:4px;color:#a5a5ad;line-height:1.35}.danger-text{color:#ffadb9}.ob-modal-overlay{background:rgba(0,0,0,.62);backdrop-filter:blur(5px)}.ob-modal-card{background:#18181d;color:#f5f5f7}.ob-modal-eyebrow,.ob-modal-headline{color:#aaaab3}.ob-modal-type{color:#f5f5f7}.ob-progressbar .ob-seg{background:#35353b}.ob-progressbar .ob-seg.on{background:#f2f2f4}.ob-photo-slot,.ob-prompt-card select,.ob-prompt-card textarea,.ob-pip{background:#17171b;color:#f5f5f7;border-color:#36363e}.ob-pip.on{border-color:#f2f2f4;background:#29292f}.ob-mbti-section{color:#d6d6dc}.ob-error{color:#ff9eac}
